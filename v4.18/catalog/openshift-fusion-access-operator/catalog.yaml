@@ -1,0 +1,135 @@
+---
+defaultChannel: alpha
+name: openshift-fusion-access-operator
+schema: olm.package
+---
+entries:
+- name: openshift-fusion-access-operator.v0.9.0
+name: alpha
+package: openshift-fusion-access-operator
+schema: olm.channel
+---
+image: registry.stage.redhat.io/openshift-storage-scale-operator-tech-preview/openshift-fusion-access-operator-bundle@sha256:4515faa5d7e14f992f187853eee1de469e3c3b48f59a4cd7bfccb79ecf99a6a5
+name: openshift-fusion-access-operator.v0.0.9
+package: openshift-fusion-access-operator
+properties:
+- type: olm.gvk
+  value:
+    group: fusion.storage.openshift.io
+    kind: FusionAccess
+    version: v1alpha1
+- type: olm.gvk
+  value:
+    group: fusion.storage.openshift.io
+    kind: LocalVolumeDiscovery
+    version: v1alpha1
+- type: olm.gvk
+  value:
+    group: fusion.storage.openshift.io
+    kind: LocalVolumeDiscoveryResult
+    version: v1alpha1
+- type: olm.package
+  value:
+    packageName: openshift-fusion-access-operator
+    version: 0.0.9
+- type: olm.csv.metadata
+  value:
+    annotations:
+      alm-examples: |-
+        [
+          {
+            "apiVersion": "fusion.storage.openshift.io/v1alpha1",
+            "kind": "FusionAccess",
+            "metadata": {
+              "name": "fusionaccess-sample"
+            },
+            "spec": {
+              "ibm_cnsa_version": "v5.2.3.0.rc1"
+            }
+          }
+        ]
+      capabilities: Basic Install
+      createdAt: "2025-04-24T18:24:45Z"
+      features.operators.openshift.io/cnf: "false"
+      features.operators.openshift.io/cni: "false"
+      features.operators.openshift.io/csi: "true"
+      features.operators.openshift.io/disconnected: "false"
+      features.operators.openshift.io/fips-compliant: "false"
+      features.operators.openshift.io/proxy-aware: "true"
+      features.operators.openshift.io/tls-profiles: "false"
+      features.operators.openshift.io/token-auth-aws: "false"
+      features.operators.openshift.io/token-auth-azure: "false"
+      features.operators.openshift.io/token-auth-gcp: "false"
+      operatorframework.io/initialization-resource: '{"apiVersion":"fusion.storage.openshift.io/v1alpha1","kind":"FusionAccess","metadata":{"name":"fusionaccess-sample"},"spec":{"ibm_cnsa_version":"v5.2.3.0.rc1"}}'
+      operatorframework.io/suggested-namespace: openshift-fusion-access
+      operators.openshift.io/infrastructure-features: '["disconnected"]'
+      operators.openshift.io/valid-subscription: '["Openshift Container Platform","OpenShift
+        Virtualization Engine"]'
+      operators.operatorframework.io/builder: operator-sdk-unknown
+      operators.operatorframework.io/internal-objects: '["localvolumediscoveryresults.fusion.storage.openshift.io","localvolumediscoveries.fusion.storage.openshift.io"]'
+      operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
+    apiServiceDefinitions: {}
+    crdDescriptions:
+      owned:
+      - description: FusionAccess is the Schema for the fusionaccesses API
+        displayName: Fusion Access
+        kind: FusionAccess
+        name: fusionaccesses.fusion.storage.openshift.io
+        specDescriptors:
+        - description: Version of IBMs installation manifests found at https://github.com/IBM/ibm-spectrum-scale-container-native
+          displayName: Ibm Cnsa Version
+          path: ibm_cnsa_version
+          x-descriptors:
+          - urn:alm:descriptor:com.tectonic.ui:select:v5.2.2.1
+          - urn:alm:descriptor:com.tectonic.ui:select:v5.2.3.0.rc1
+        - displayName: Local Volume Discovery
+          path: storagedevicediscovery
+          x-descriptors:
+          - urn:alm:descriptor:com.tectonic.ui:hidden
+        version: v1alpha1
+      - kind: LocalVolumeDiscovery
+        name: localvolumediscoveries.fusion.storage.openshift.io
+        version: v1alpha1
+      - kind: LocalVolumeDiscoveryResult
+        name: localvolumediscoveryresults.fusion.storage.openshift.io
+        version: v1alpha1
+    description: Fusion Access for SAN
+    displayName: Fusion Access for SAN
+    installModes:
+    - supported: false
+      type: OwnNamespace
+    - supported: false
+      type: SingleNamespace
+    - supported: false
+      type: MultiNamespace
+    - supported: true
+      type: AllNamespaces
+    keywords:
+    - gpfs
+    - storage
+    links:
+    - name: Fusion Access Operator
+      url: https://openshift-fusion-access-operator.domain
+    maintainers:
+    - email: michele@acksyn.org
+      name: mbaldessari
+    - email: aeros@redhat.com
+      name: darkdoc
+    maturity: alpha
+    minKubeVersion: 1.23.0
+    provider:
+      name: Fusion Access for SAN Team
+relatedImages:
+- image: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9@sha256:29201e85bd41642b72c7c0ce915e40aad90823d0efc3e7bbab9c351c92c74341
+  name: kube-rbac-proxy
+- image: registry.stage.redhat.io/openshift-storage-scale-operator-tech-preview/openshift-fusion-access-console-plugin-rhel9@sha256:607274d5d38627aec803013fd5aa43cd1125641f97f0be20b975bbc30bcee816
+  name: openshift-fusion-access-operator-console-plugin
+- image: registry.stage.redhat.io/openshift-storage-scale-operator-tech-preview/openshift-fusion-access-devicefinder-rhel9@sha256:23735cff83cec8970cbac1b9b541ecea601b85070b39f34a7a72b50bee409a49
+  name: openshift-storage-scale-operator-devicefinder
+- image: registry.stage.redhat.io/openshift-storage-scale-operator-tech-preview/openshift-fusion-access-must-gather-rhel9@sha256:bc4d8e919544e38742e1a15846145da3de5e7e950851bcba31392ad207080f0b
+  name: openshift-storage-scale-operator-must-gather
+- image: registry.stage.redhat.io/openshift-storage-scale-operator-tech-preview/openshift-fusion-access-operator-bundle@sha256:4515faa5d7e14f992f187853eee1de469e3c3b48f59a4cd7bfccb79ecf99a6a5
+  name: ""
+- image: registry.stage.redhat.io/openshift-storage-scale-operator-tech-preview/openshift-fusion-access-rhel9-operator@sha256:adad095e567710f7aab9f528acfe5b1327f0675cd60b2834cbd3bbdc2f7d54d3
+  name: manager
+schema: olm.bundle
