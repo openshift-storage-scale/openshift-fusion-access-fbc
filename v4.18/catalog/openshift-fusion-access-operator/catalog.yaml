@@ -4,7 +4,7 @@ name: openshift-fusion-access-operator
 schema: olm.package
 ---
 entries:
-- name: openshift-fusion-access-operator.v0.9.0
+- name: openshift-fusion-access-operator.v0.0.9
 name: alpha
 package: openshift-fusion-access-operator
 schema: olm.channel
